@@ -14,7 +14,7 @@ body {
 /* banner */
 
 .carousel-item img {
-    height: 250px; 
+    height: 500px; 
     object-fit: cover; 
 }
 
@@ -108,13 +108,55 @@ body {
 }
 
 .navbar {
-    background-color: #fff;
-}
-.nav-bottom {
-    position: sticky;
+    position: STICKY;
     bottom: 0;
+    left: 0;
     width: 100%;
-    background-color: #f8d49b;
-    border-top: 1px solid #ddd;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    background: #ffcc80;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+@media only screen and (min-width: 1024px) {
+    .navbar{
+        display : none !important;
+    }
+}
+.slick-slide {
+	transform: scale(0.8);
+	transition: all 0.4s ease-in-out;
+	padding: 40px 0;
+}
+.slick-slide img {
+	max-width: 100%;
+	transition: all 0.4s ease-in-out;
+}
+
+.slick-center {
+	transform: scale(1.1);
+}
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.8rem;
+}
+.navbar .logo {
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -40px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+    
+.navbar .logo img {
+    width: 65px;
 }
