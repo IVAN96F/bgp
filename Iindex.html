@@ -164,13 +164,35 @@
         </div>
     </div>
     <!-- header Bawah -->
-    <div class="navbar">
+    <!-- <div class="navbar">
         <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
         <div class="logo">
             <img src="pngwing.com.png" alt="Logo">
         </div>
         <a href="#"><i class="bi bi-list"></i></a>
+    </div> -->
+    <!-- Sidebar -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+        <h5 class="text-white">Menu</h5>
+        <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Kategori</a></li>
+            <li><a href="#">Promo</a></li>
+            <li><a href="#">Kontak</a></li>
+        </ul>
     </div>
+</div>
+
+<!-- Navbar -->
+<div class="navbar">
+    <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
+    <div class="logo">
+        <img src="pngwing.com.png" alt="Logo">
+    </div>
+    <a href="#" id="menu-icon"><i class="bi bi-list"></i></a>
+</div>
+
     <script src="bootstrap-5.0.0-dist/js/bootstrap.bundle.min.js"> </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -189,6 +211,21 @@
             arrows: false
             });
         });
+
+        document.getElementById('menu-icon').addEventListener('click', function(event) {
+        event.preventDefault();
+        document.getElementById('sidebar').classList.toggle('active');
+    });
+
+    // Menutup sidebar jika klik di luar area sidebar
+    document.addEventListener('click', function(event) {
+        let sidebar = document.getElementById('sidebar');
+        let menuIcon = document.getElementById('menu-icon');
+
+        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
+            sidebar.classList.remove('active');
+        }
+    });
     </script>
 </body>
 </html>
