@@ -23,10 +23,12 @@ body {
 .hovered-card {
     transition: .3s;
     margin-bottom: 20px;
+   
 }
 
 .hovered-card:hover {
     transform: scale(1.1);
+    
 }
 .card {
     border-radius: 15px; /* Sesuaikan sesuai keinginan */

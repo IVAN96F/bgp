@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #f8b26a, #fce9d4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            max-width: 90%;
+            text-align: center;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+        .login-container img {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #f8b26a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .login-btn:hover {
+            background: #e89b50;
+        }
+        .register-link {
+            margin-top: 10px;
+        }
+        .register-link a {
+            color: #f8b26a;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="logo.png" alt="Logo">
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="text" placeholder="Nama Pengguna" required>
+            </div>
+            <div class="input-group">
+                <input type="password" placeholder="Kata Sandi" required>
+            </div>
+            <button type="submit" class="login-btn">Log in</button>
+        </form>
+        <div class="register-link">
+            <span>Belum Punya Akun? <a href="#">Klik Di Sini</a></span>
+        </div>
+    </div>
+</body>
+</html>
