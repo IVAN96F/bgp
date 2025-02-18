@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,8 +15,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
+// Route::get('/', function () {
+//     return view('index');
+// });
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', AdminProductController::class);
 });
 
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', AdminProductController::class);
+});
+
+Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
+
+Route::get('/', [ProductController::class, 'index']);
 

@@ -84,62 +84,27 @@
             <h2 class="text-center mb-4">Our Featured Product</h2>
             <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center">
                 <!-- Product 1 -->
-                <a href="" class="text-decoration-none">
-                    <div class="col d-flex justify-content-center hovered-card">
+                @foreach ($products as $product)
+                @php
+                    $images = explode(',', $product->images); 
+                    $firstImage = $images[0] ?? 'default.jpg'; 
+                @endphp
+                <div class="col-md-4 mb-4">
+                    <a href="#" class="text-decoration-none">
                         <div class="card text-center" style="width: 18rem;">
-                            <img src="{{ asset('img/chair4.png') }}" class="card-img-top" alt="SOFA 1">
+                            <img src="{{ asset('storage/' . $firstImage) }}" class="card-img-top" alt="{{ $product->name }}">
                             <div class="card-body">
-                                <h5 class="mt-2 text-start" style="font-size: 18px">SOFA 1</h5>
-                                <p class="text-start mb-1" style="font-size: 15px">Deskripsi singkat untuk sofa 1.</p>
-                                {{-- <a href="product.html" class="btn btn-primary">Lihat Detail</a> --}}
+                                <h5 class="mt-2 text-start" style="font-size: 18px">{{ $product->name }}</h5>
+                                <p class="text-start mb-1" style="font-size: 15px">{{ $product->description }}</p>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+            @endforeach
                 
                 
                 <!-- Product 2 -->
-                <a href="" class="text-decoration-none">
-                    <div class="col d-flex justify-content-center hovered-card">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img src="{{ asset('img/chair4.png') }}" class="card-img-top" alt="SOFA 1">
-                            <div class="card-body">
-                                <h5 class="mt-2 text-start" style="font-size: 18px">SOFA 1</h5>
-                                <p class="text-start mb-1" style="font-size: 15px">Deskripsi singkat untuk sofa 1.</p>
-                                {{-- <a href="product.html" class="btn btn-primary">Lihat Detail</a> --}}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                
-        
-                <!-- Product 3 -->
-                <a href="" class="text-decoration-none">
-                    <div class="col d-flex justify-content-center hovered-card">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img src="{{ asset('img/chair4.png') }}" class="card-img-top" alt="SOFA 1">
-                            <div class="card-body">
-                                <h5 class="mt-2 text-start" style="font-size: 18px">SOFA 1</h5>
-                                <p class="text-start mb-1" style="font-size: 15px">Deskripsi singkat untuk sofa 1.</p>
-                                {{-- <a href="product.html" class="btn btn-primary">Lihat Detail</a> --}}
-                            </div>
-                        </div>
-                    </div>
-                </a>
-        
-                <!-- Product 4 -->
-                <a href="" class="text-decoration-none">
-                    <div class="col d-flex justify-content-center hovered-card">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img src="{{ asset('img/chair4.png') }}" class="card-img-top" alt="SOFA 1">
-                            <div class="card-body">
-                                <h5 class="mt-2 text-start" style="font-size: 18px">SOFA 1</h5>
-                                <p class="text-start mb-1" style="font-size: 15px">Deskripsi singkat untuk sofa 1.</p>
-                                {{-- <a href="product.html" class="btn btn-primary">Lihat Detail</a> --}}
-                            </div>
-                        </div>
-                    </div>
-                </a>
+
             </div>
         </div>
         

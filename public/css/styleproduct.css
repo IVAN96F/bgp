@@ -1,0 +1,143 @@
+body {
+    background-color: #f8f9fa;
+}
+.product-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+.product-image {
+    flex: 1;
+}
+.carousel-item img {
+    height: 250PX; 
+  
+}
+.product-details {
+    flex: 2;
+}
+.btn-warning {
+    border-radius: 10px;
+    width: 45%;
+}
+
+.btn-favorite{
+    border-radius: 10px;
+    width: 45%;
+}
+
+.related-products {
+    margin-top: 20px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+.navbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #ffcc80;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.8rem;
+}
+.navbar .logo {
+    background-color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: -40px;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+    
+.navbar .logo img {
+    width: 65px;
+}
+
+@media only screen and (max-width: 514px){
+    .product-container {
+        flex-direction: column;
+    }
+}
+
+.slider-carou{
+    width: 25% !important;
+}
+.highlight {
+    background-color: #f4b965;
+    border-radius: 10px;
+    padding: 15px;
+}
+.item-card {
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+@media only screen and (max-width: 1024px){
+    .slider-carou{
+        width: 50% !important;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .navbar{
+        display : none !important;
+    }
+}
+
+/* sidebar start */
+.sidebar {
+    position: fixed;
+    bottom: 80px; /* Tepat di atas navbar */
+    right: 0;
+    width: 50%;
+    height: 50vh;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.sidebar-content ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.sidebar-content ul li {
+    padding: 10px 0;
+}
+
+.sidebar-content ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar-content ul li a:hover {
+    color: #ffcc80;
+}
+
+/* sidebar end */
