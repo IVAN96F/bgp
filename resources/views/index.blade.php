@@ -1,16 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beranda BGP</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.productLayout')
+
+@section('title', 'Home')
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-</head>
-<body>
+
+@section('content')
     <div class="container mt-3">
         <!-- Header -->
         <div class="d-flex justify-content-between align-items-center">
@@ -22,7 +15,7 @@
             <i class="bi bi-star-fill text-warning fs-3"></i>
         </div>
         </div>
-    </nav>
+
 
     <!--banner-->
     <div id="carouselBanner" class="carousel slide mt-3" data-bs-ride="carousel">
@@ -81,32 +74,29 @@
 
          <!--featured product-->
          <div class="container py-4">
-            <h2 class="text-center mb-4">Our Featured Product</h2>
-            <div class="row row-cols-2 row-cols-md-4 g-4 justify-content-center">
-                <!-- Product 1 -->
+            <h2 class="text-center mb-4">Our Featured Products</h2>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
                 @foreach ($products as $product)
-                @php
-                    $images = explode(',', $product->images); 
-                    $firstImage = $images[0] ?? 'default.jpg'; 
-                @endphp
-                <div class="col-md-4 mb-4">
-                    <a href="#" class="text-decoration-none">
-                        <div class="card text-center" style="width: 18rem;">
-                            <img src="{{ asset('storage/' . $firstImage) }}" class="card-img-top" alt="{{ $product->name }}">
-                            <div class="card-body">
-                                <h5 class="mt-2 text-start" style="font-size: 18px">{{ $product->name }}</h5>
-                                <p class="text-start mb-1" style="font-size: 15px">{{ $product->description }}</p>
+                    @php
+                        $firstImage = $product->images->first()->image_path ?? 'default.jpg';
+                    @endphp
+                    <div class="col">
+                        <a href="{{ route('product.show', $product->id) }}" class="text-decoration-none">
+                            <div class="card h-100 text-center">
+                                <img src="{{ asset('storage/' . $firstImage) }}" class="card-img-top" alt="{{ $product->name }}">
+                                <div class="card-body d-flex flex-column">
+                                    <h5 class="mt-2 text-start" style="font-size: 18px">{{ $product->name }}</h5>
+                                    <p class="text-start flex-grow-1" style="font-size: 15px">{{ $product->description }}</p>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-                
-                
-                <!-- Product 2 -->
-
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
+        
+        
+        
         
                 <!--bagaskara news-->
     <div class="container py-5">
@@ -176,40 +166,9 @@
         </div>
     </section>
 
-<!--footer-->
-    <!-- header Bawah -->
-    <!-- <div class="navbar">
-        <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
-        <div class="logo">
-            <img src="pngwing.com.png" alt="Logo">
-        </div>
-        <a href="#"><i class="bi bi-list"></i></a>
-    </div> -->
-    <!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-content">
-        <h5 class="text-white">Menu</h5>
-        <ul class="list-unstyled">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Kategori</a></li>
-            <li><a href="#">Promo</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-    </div>
-</div>
 
-<!-- Navbar -->
-<div class="navbar">
-    <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
-    <div class="logo">
-        <img src="pngwing.com.png" alt="Logo">
-    </div>
-    <a href="#" id="menu-icon"><i class="bi bi-list"></i></a>
-</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
     <script>
         $(document).ready(function () {
             $(".slider").slick({
@@ -226,20 +185,6 @@
             });
         });
 
-        document.getElementById('menu-icon').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('sidebar').classList.toggle('active');
-    });
-
-    // Menutup sidebar jika klik di luar area sidebar
-    document.addEventListener('click', function(event) {
-        let sidebar = document.getElementById('sidebar');
-        let menuIcon = document.getElementById('menu-icon');
-
-        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
-            sidebar.classList.remove('active');
-        }
-    });
+        
     </script>
-</body>
-</html>
+@endsection

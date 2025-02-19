@@ -30,4 +30,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
 Route::get('/', [ProductController::class, 'index']);
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 

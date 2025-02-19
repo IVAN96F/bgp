@@ -1,49 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styleproduct.css">
-    <title>Product</title>
-</head>
-<body>
-    <div class="container mt-3">
-        <!-- Header -->
-        <div class="d-flex justify-content-between align-items-center">
-            <img src="logo.png" alt="Logo" height="40">
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Cari produk...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
-            <i class="bi bi-star-fill text-warning fs-3"></i>
-        </div>
+@extends('layouts.productLayout')
 
+@section('content')
         <!-- Produk Section -->
         <div class="product-container">
             <!-- Gambar Produk -->
-            <div id="carouselBanner" class="carousel slide slider-carou  w-100" data-bs-ride="carousel">
-                <!-- Indikator (opsional) -->
+            <div id="carouselBanner" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2"></button>
+                    @foreach ($product->images as $index => $image)
+                        <button type="button" data-bs-target="#carouselBanner" 
+                                data-bs-slide-to="{{ $index }}" 
+                                class="{{ $index == 0 ? 'active' : '' }}"></button>
+                    @endforeach
                 </div>
             
-                <!-- Wrapper untuk slide -->
-                <div class="carousel-inner ">
-                    <div class="carousel-item active">
-                        <img src="BGP.png" class="d-block w-100" alt="Banner 1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="BGP.png" class="d-block w-100" alt="Banner 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="BGP.png" class="d-block w-100" alt="Banner 3">
-                    </div>
+                <div class="carousel-inner">
+                    @foreach ($product->images as $index => $image)
+                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                            <img src="{{ asset('storage/' . $image->image_path) }}" 
+                                 class="d-block w-100 img-fluid" 
+                                 alt="{{ $product->name }}" style="height: 300px; width: 100%; object-fit: cover; width: auto; height: auto;">
+                            
+                        </div>
+                    @endforeach
                 </div>
             
-                <!-- Tombol navigasi -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
@@ -52,92 +32,43 @@
                 </button>
             </div>
             
+
             <!-- Detail Produk -->
-            <div class="product-details">
-                <h1>MEJA KEREN</h5>
-                <p class="text-muted">DESKRIPSI LOREM IPSUM DOLOR SIT AMET KEPET</p>
-                <h1 class="text-danger">Rp xxx.xxx.xxx</h5>
+            <div class="product-details mt-4">
+                <h1>{{ $product->name }}</h1>
+                <p class="text-muted">{{ $product->description }}</p>
+                <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
                 <div class="d-flex justify-content-between mt-2">
-                    <button class="btn btn-warning ">
+                    <button class="btn btn-warning">
                         <i class="bi bi-camera"></i>
                     </button>
                     <button class="btn btn-success btn-favorite">
-                        <i class="bi bi-star-fill"></i> add to favorit
+                        <i class="bi bi-star-fill"></i> Add to Favorite
                     </button>
                 </div>
             </div>
         </div>
 
         <!-- Produk Terkait -->
-        <div class="related-products">
+        {{-- <div class="related-products mt-5">
             <h6>Produk Terkait</h6>
             <div class="d-flex justify-content-around">
-                <div class="card text-center" style="width: 45%;">
-                    <img src="BGP.png" class="card-img-top" alt="Produk 2">
-                    <div class="card-body">
-                        <h6>NAMA</h6>
-                        <p class="text-muted">DESC</p>
+                @foreach ($relatedProducts as $related)
+                    <div class="card text-center" style="width: 45%;">
+                        <a href="{{ route('product.show', $related->id) }}" class="text-decoration-none">
+                            <img src="{{ asset('storage/' . ($related->images->first()->image_path ?? 'default.jpg')) }}" class="card-img-top" alt="{{ $related->name }}">
+                            <div class="card-body">
+                                <h6>{{ $related->name }}</h6>
+                                <p class="text-muted">{{ $related->description }}</p>
+                            </div>
+                        </a>
                     </div>
-                </div>
-                <div class="card text-center" style="width: 45%;">
-                    <img src="BGP.png" class="card-img-top" alt="Produk 3">
-                    <div class="card-body">
-                        <h6>NAMA</h6>
-                        <p class="text-muted">DESC</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
-        </div>
-    </div>
-
-<!-- Sidebar -->
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-content">
-        <h5 class="text-white">Menu</h5>
-        <ul class="list-unstyled">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Kategori</a></li>
-            <li><a href="#">Promo</a></li>
-            <li><a href="#">Kontak</a></li>
-        </ul>
-    </div>
-</div>
-
-<!-- Navbar -->
-<div class="navbar">
-    <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
-    <div class="logo">
-        <img src="pngwing.com.png" alt="Logo">
-    </div>
-    <a href="#" id="menu-icon"><i class="bi bi-list"></i></a>
-</div>
+        </div> --}}
 
 
-<!--navbar-->
-    <!-- <div class="navbar">
-        <a href="Iindex.html"><i class="bi bi-house-door-fill"></i></a>
-        <div class="logo">
-            <img src="pngwing.com.png" alt="Logo">
-        </div>
-        <a href="#"><i class="bi bi-list"></i></a>
-    </div> -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
-</body>
-<script>
-    document.getElementById('menu-icon').addEventListener('click', function(event) {
-        event.preventDefault();
-        document.getElementById('sidebar').classList.toggle('active');
-    });
-
-    // Menutup sidebar jika klik di luar area sidebar
-    document.addEventListener('click', function(event) {
-        let sidebar = document.getElementById('sidebar');
-        let menuIcon = document.getElementById('menu-icon');
-
-        if (!sidebar.contains(event.target) && !menuIcon.contains(event.target)) {
-            sidebar.classList.remove('active');
-        }
-    });
-</script>
-</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+@endsection
