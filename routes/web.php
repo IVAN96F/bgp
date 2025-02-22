@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\AdminProductController;
-
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,3 +32,24 @@ Route::delete('/admin/products/delete-image/{id}', [AdminProductController::clas
 Route::get('/', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
+
+
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('home');
+    })->name('home');
+});

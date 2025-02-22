@@ -11,16 +11,21 @@
 </head>
 <body>
     <!-- Header -->
+
     <div class="container mt-3">
         <div class="d-flex justify-content-between align-items-center">
             <img src="{{ asset('img/BGP.png') }}" alt="Logo" height="40">
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Cari produk...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
+
+            <!-- Form Pencarian -->
+            <form action="{{ route('search') }}" method="GET" class="input-group w-50">
+                <input type="text" name="query" class="form-control" placeholder="Cari produk..." value="{{ request('query') }}">
+                <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+
             <i class="bi bi-star-fill text-warning fs-3"></i>
         </div>
     </div>
+
 
 
 
@@ -46,7 +51,7 @@
     <div class="navbar">
         <a href="{{ url('/') }}"><i class="bi bi-house-door-fill"></i></a>
         <div class="logo">
-            <img src="pngwing.com.png" alt="Logo">
+            <img src="{{ asset('img/BGP.png') }}" alt="Logo" style="border-radius: 50%">
         </div>
         <a href="#" id="menu-icon"><i class="bi bi-list"></i></a>
     </div>

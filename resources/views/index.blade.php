@@ -4,17 +4,7 @@
     
 
 @section('content')
-    <div class="container mt-3">
-        <!-- Header -->
-        <div class="d-flex justify-content-between align-items-center">
-            <img src="{{ asset('img/BGP.png') }}" alt="Logo" height="40">
-            <div class="input-group w-50">
-                <input type="text" class="form-control" placeholder="Cari produk...">
-                <button class="btn btn-outline-secondary"><i class="bi bi-search"></i></button>
-            </div>
-            <i class="bi bi-star-fill text-warning fs-3"></i>
-        </div>
-        </div>
+    
 
 
     <!--banner-->
@@ -48,8 +38,8 @@
         </button>
     </div>
     
-</div>
-<!--TERLARIS-->
+
+{{-- <!--TERLARIS-->
     <div class="container mt-4">
         <h2 class="text-center mb-4">Terlaris</h2>
         <div class="slider">
@@ -70,7 +60,7 @@
                 <img src="{{ asset('img/chair5.png')  }}" alt="" />
             </div>
         </div>
-    </div>
+    </div> --}}
 
          <!--featured product-->
          <div class="container py-4">

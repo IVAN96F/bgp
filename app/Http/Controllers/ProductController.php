@@ -17,4 +17,16 @@ class ProductController extends Controller
         $product = Product::with('images')->findOrFail($id);
         return view('product', compact('product'));
     }
+
+    public function search(Request $request)
+{
+    $query = $request->input('query'); // Ambil input pencarian
+
+    // Cari produk berdasarkan nama atau deskripsi
+    $products = Product::where('name', 'LIKE', "%$query%")
+                        ->orWhere('description', 'LIKE', "%$query%")
+                        ->get();
+
+    return view('search-results', compact('products', 'query'));
+}
 }
