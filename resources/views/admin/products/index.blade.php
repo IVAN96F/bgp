@@ -3,6 +3,11 @@
 @section('title', 'Daftar Produk')
 
 @section('content')
+<h3>Daftar Produk</h3>
+<form class="d-flex w-25 mb-4" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-primary" type="submit">Search</button>
+  </form>
 <a href="{{ route('admin.products.create') }}" class="btn btn-primary">Tambah Produk</a>
 <table class="table mt-3">
     <thead>
