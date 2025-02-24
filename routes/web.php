@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,13 @@ use App\Http\Controllers\ProfileController;
 //     return view('index');
 // });
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('products', AdminProductController::class);
-});
+// Route::prefix('admin')->name('admin.')->group(function () {
+//     Route::resource('products', AdminProductController::class);
+// });
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', AdminProductController::class);
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
 
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
@@ -52,4 +54,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [ProductController::class, 'index'])->name('home');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/update-photo', [ProfileController::class, 'updatePhoto'])->name('profile.updatePhoto');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
+

@@ -1,0 +1,158 @@
+body {
+    font-family: 'Maven Pro';
+    padding-bottom: 100px;
+}
+
+.profile-container {
+    margin-top: 20px;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+}
+
+.profile-header .back-arrow {
+    font-size: 24px;
+    text-decoration: none;
+    color: #333;
+    margin-right: 10px;
+}
+
+.profile-info {
+    margin-top: 20px;
+}
+
+.profile-picture {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+
+}
+
+.edit-icon button {
+    position: absolute;
+    bottom: 0;
+    margin-left: 50px;
+    background-color: #D6D6D6;
+    border-radius: 50%;
+    padding: 3px;
+    align-items: center;
+    transition: transform 0.5 ease;
+}
+
+.edit-icon button:hover {
+    background-color: #b8b8b8;
+    transform: scale(1.2);
+}
+
+.profile-info h4 {
+    margin-top: 10px;
+}
+
+.profile-points {
+    margin-top: 10px;
+}
+
+.profile-options {
+    margin-top: 20px;
+}
+
+.profile-options .btn {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.logout-button {
+    margin-top: 20px;
+    background-color: #f9C46E;
+    border-radius: 15px 15px 15px 15px;
+    padding: 15px;
+}
+
+.btn-profile {
+    border-radius: 15px 15px 15px 15px;
+    padding: 25px;
+    background-color: #a4ba5425;
+    display: block;
+}
+
+.text-profile {
+    color: #f9C46E;
+}
+
+.icon-profile {
+    margin-right: 5px;
+}
+
+.btn-profile:hover {
+    background-color: white;
+}
+
+.btn-coin:hover {
+    color: black;
+}
+
+.btn-logout:hover {
+    color: white;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner-container {
+    position: relative;
+}
+
+.spinner-border {
+    width: 5rem;
+    height: 5rem;
+}
+
+.spinner-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 4rem;
+    height: 4rem;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.countdown div {
+    color: black;
+}
+
+.countdown .time {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.countdown .label {
+    font-size: 1rem;
+    margin-top: 5px;
+}
+
+trix-toolbar [data-trix-button-group="file-tools"] {
+    display: none;
+}
