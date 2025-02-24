@@ -85,14 +85,11 @@
             </div>
         </div>
         
-        
-        
-        
-                <!--bagaskara news-->
+    <!--bagaskara news-->
     <div class="container py-5">
         <h3 class="text-center mt-4">bagaskara news</h3>
         <div class="row g-4">
-            <a href="" class="text-decoration-none">
+            <a href="" class="text-decoration-none d-flex justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="card text-center">
                         <div class="card-body">
@@ -103,7 +100,7 @@
                     </div>
                 </div>
             </a>
-            <a href="" class="text-decoration-none">
+            <a href="" class="text-decoration-none d-flex justify-content-center">
                 <div class="col-12 col-md-6">
                     <div class="card text-center">
                         <div class="card-body">
@@ -128,7 +125,7 @@
         </div>
     </div>
     <!-- Contact -->
-    <section id="contact" class="text-center mt-5" style="margin-bottom: 7vh">
+    <section id="contact" class="text-center mt-5" style="margin-bottom: 10em !important">
         <h2 class="section-title mb-3 mt-3">Our Contact</h2>
         <div class="container">
             <div class="row justify-content-center g-3">

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +31,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
-Route::get('/', [ProductController::class, 'index']);
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
@@ -49,7 +50,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
+    Route::get('/', [ProductController::class, 'index'])->name('home');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });
