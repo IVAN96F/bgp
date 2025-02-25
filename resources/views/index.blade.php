@@ -79,13 +79,7 @@
                                     <p class="text-start flex-grow-1" style="font-size: 15px">{{ $product->description }}</p>
                                     <p class="text-start" style="font-size: 15px">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                                 </div>
-                                <div class="card-footer">
-                                    <form action="" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <button type="submit" class="btn btn-primary"><i class="bi bi-star-fill text-warning"></i></button>
-                                    </form>
-                                </div>
+                               
                                 <div>
 
                                 </div>

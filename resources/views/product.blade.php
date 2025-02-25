@@ -42,7 +42,7 @@
                     <button class="btn btn-warning">
                         <i class="bi bi-camera"></i>
                     </button>
-                    <button class="btn btn-success btn-favorite">
+                    <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
                         <i class="bi bi-star-fill"></i> Add to Favorite
                     </button>
                 </div>
@@ -68,7 +68,31 @@
         </div> --}}
 
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $('.btn-favorite').click(function () {
+                    let productId = $(this).data('product-id');
 
+                    $.ajax({
+                        url: "{{ route('favorite.add') }}",
+                        type: "POST",
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            product_id: productId
+                        },
+                        success: function (response) {
+                            alert(response.message);
+                        },
+                        error: function (xhr) {
+                            alert(xhr.responseJSON.error);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
 @endsection

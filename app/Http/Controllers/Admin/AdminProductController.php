@@ -10,11 +10,21 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::with('images')->get();
+        $query = Product::with('images');
+
+        // Cek apakah ada input pencarian
+        if ($request->has('q')) {
+            $search = $request->q;
+            $query->where('name', 'LIKE', "%$search%");
+        }
+
+        $products = $query->paginate(10); // Tambahkan pagination
+
         return view('admin.products.index', compact('products'));
     }
+
 
     public function create()
     {

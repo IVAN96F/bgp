@@ -22,7 +22,10 @@
                 <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
             </form>
 
-            <a href=""><i class="bi bi-star-fill text-warning fs-3"></i></a>
+            <a href="{{ route('favorite.index') }}">
+                <i class="bi bi-star-fill text-warning fs-3"></i>
+            </a>
+            
         </div>
     </div>
 

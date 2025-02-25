@@ -94,6 +94,13 @@
                         </span>
                     </button>
                 </a>
+                <a href="{{ route('favorite.index') }}" style="text-decoration: none;">
+                    <button class="btn-profile btn btn-outline-secondary btn-block" style="text-align: left;">
+                        <span class="text-profile">
+                            <i class="fa fa-solid fa-heart fa-2xl icon-profile" style="color: #f9C46E;"></i> Favorite
+                        </span>
+                    </button>
+                </a>
                 
 
             </div>

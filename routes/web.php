@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminProductController;
 
@@ -57,5 +58,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/update-photo', [ProfileController::class, 'updatePhoto'])->name('profile.updatePhoto');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+    // Favorite
+    Route::post('/favorite/add', [FavoriteController::class, 'addToFavorite'])->name('favorite.add');
+    Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
+    Route::delete('/favorite/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
 });
 
