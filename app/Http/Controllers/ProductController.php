@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Promo;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index() {
+        $promos = Promo::latest()->get();
         $products = Product::with('images')->get(); // Ambil semua produk dengan relasi gambar
-        return view('index', compact('products'));
+        return view('index', compact('products' , 'promos'));
     }
     
     // Menampilkan detail produk berdasarkan ID

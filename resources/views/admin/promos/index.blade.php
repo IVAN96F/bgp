@@ -38,36 +38,9 @@
                     </td>
                 </tr>
             @endforeach
-        </tbody>@extends('layouts.admin')
+        </tbody>
 
-        @section('content')
-            <h1>Promo List</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Promo Name</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($promos as $promo)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $promo->name }}</td>
-                            <td>
-                                <a href="{{ route('admin.promos.edit', $promo->id) }}" class="btn btn-warning">Edit</a>
-                                <form action="{{ route('admin.promos.destroy', $promo->id) }}" method="POST" style="display:inline;">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        @endsection
+        
         
     </table>
 </div>
