@@ -6,16 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up() {
-        Schema::create('promos', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->string('image')->nullable(); // Untuk menyimpan path gambar promo
+            $table->string('name')->unique(); // Nama role (Admin, User, dll.)
             $table->timestamps();
         });
     }
 
     public function down() {
-        Schema::dropIfExists('promos');
+        Schema::dropIfExists('roles');
     }
 };

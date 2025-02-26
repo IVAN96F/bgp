@@ -9,7 +9,5 @@ class Promo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title', 'description', 'image_path'
-    ];
+    protected $fillable = ['title', 'description', 'image'];
 }

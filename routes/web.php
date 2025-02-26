@@ -70,3 +70,16 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('promos', PromoController::class);
 });
+
+// Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+//     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+//     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+// });
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
+
+});

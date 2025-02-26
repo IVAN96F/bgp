@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'email', 'username', 'password', 'profile_photo_path'
+        'name', 'email', 'username', 'password', 'profile_photo_path', 'role_id'
     ];
 
     /**
@@ -44,5 +44,19 @@ class User extends Authenticatable
     {
         return $this->hasMany(Favorite::class);
     }
+
+    public function role() {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::retrieved(function ($user) {
+            $user->load('role');
+        });
+    }
+
 
 }
