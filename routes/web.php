@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PromoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
@@ -62,5 +63,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/favorite/add', [FavoriteController::class, 'addToFavorite'])->name('favorite.add');
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
     Route::delete('/favorite/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
+    
 });
 
+// Promo
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('promos', PromoController::class);
+});

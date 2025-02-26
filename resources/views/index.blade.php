@@ -18,16 +18,13 @@
     
         <!-- Wrapper untuk slide -->
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('img/tes.png') }}" class="d-block w-100 img-fluid" alt="Banner 1" style="height: 300px; width: 100%; object-fit: cover; width: auto; height: auto;">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/tes.png') }}" class="d-block w-100 img-fluid" alt="Banner 2" style="height: 300px; width: 100%; object-fit: cover; width: auto; height: auto;">
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('img/tes.png') }}" class="d-block w-100 img-fluid" alt="Banner 3" style="height: 300px; width: 100%; object-fit: cover; width: auto; height: auto;">
-            </div>
+            @foreach ($promos as $key => $promo)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('storage/' . $promo->image) }}" class="d-block w-100" alt="{{ $promo->title }}" style="height: 300px; object-fit: cover;">
+                </div>
+            @endforeach
         </div>
+        
     
         <!-- Tombol navigasi -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
