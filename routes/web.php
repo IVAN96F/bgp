@@ -20,42 +20,23 @@ use App\Http\Controllers\Admin\AdminProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', function () {
-//     return view('index');
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+// Route::get('/register', function () {
+//     return view('auth.register');
 // });
 
-// Route::prefix('admin')->name('admin.')->group(function () {
-//     Route::resource('products', AdminProductController::class);
-// });
+// Auth
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::resource('products', AdminProductController::class);
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-});
-
-Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
-
+// User
+Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::get('/category/{id}', [ProductController::class, 'category'])->name('category');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
-Route::get('/search', [ProductController::class, 'search'])->name('search');
-
-Route::get('/register', function () {
-    return view('auth.register');
-});
-
-
-
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('/register', [AuthController::class, 'register']);
-
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-
-Route::get('/', [ProductController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('/profile/update-photo', [ProfileController::class, 'updatePhoto'])->name('profile.updatePhoto');
@@ -66,17 +47,20 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
     Route::delete('/favorite/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
 });
+
 // Promo
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('promos', PromoController::class);
 });
 
-// Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
-//     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-//     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-//     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-// });
+// ProductAdmin
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('products', AdminProductController::class);
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+});
+Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
+// CategoryAdmin
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');

@@ -10,8 +10,8 @@
         <tr>
             <th>No</th>
             <th>Nama Kategori</th>
-            <th>Deskripsi</th>
             <th>Gambar</th>
+            <th>Deskripsi</th>
             <th>Aksi</th>
         </tr>
     </thead>
@@ -25,11 +25,11 @@
                 {{ $category->description }}
             </td>
             <td>
-                <a href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
+                <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-warning">Edit</a>
                 <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
         </tr>
