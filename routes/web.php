@@ -72,9 +72,15 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('promos', PromoController::class);
 });
-Route::get('/category', [AdminCategoryController::class, 'index'])->name('category.index');
-Route::get('/category/create', [AdminCategoryController::class, 'create'])->name('category.create');
-Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->name('category.edit');
-Route::post('/category/{id}/update', [AdminCategoryController::class, 'update'])->name('category.update');
-Route::post('/category/store', [AdminCategoryController::class, 'store'])->name('category.store');
-Route::post('/category/{id}/delete', [AdminCategoryController::class, 'destroy'])->name('category.destroy');
+
+// Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+//     Route::get('/users', [UserController::class, 'index'])->name('users.index');
+//     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+//     Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
+// });
+
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
+});
