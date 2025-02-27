@@ -1,7 +1,6 @@
 @extends('layouts.productLayout')
 
 @section('title', 'Category')
-    
 
 @section('content')
 <div class="container mt-5">

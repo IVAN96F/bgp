@@ -4,7 +4,7 @@
 
 @section('content')
 <h3>Daftar Produk</h3>
-<a href="{{ route('category.create') }}" class="btn btn-primary">Tambah Produk</a>
+<a href="{{ route('admin.category.create') }}" class="btn btn-primary">Tambah Kategori</a>
 <table class="table mt-3">
     <thead>
         <tr>
@@ -25,13 +25,12 @@
                 {{ $category->description }}
             </td>
             <td>
-                <a href="{{ route('category.edit', $category->id) }}">Edit</a>
-                <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display:inline;">
+                <a href="{{ route('admin.category.edit', $category->id) }}">Edit</a>
+                <form action="{{ route('admin.category.destroy', $category->id) }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Delete</button>
                 </form>
-
             </td>
         </tr>
         @endforeach

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title', 'Tambah Produk')
+@section('title', 'Tambah Kategori')
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">Tambah Produk</h2>
+    <h2 class="mb-4">Tambah Kategori</h2>
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -16,44 +16,21 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">
-            <label for="category_id" class="form-label">Kategori</label>
-            <select class="form-select" name="category_id" required>
-                <option selected>Pilih Kategori</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="mb-3">
-            <label for="name" class="form-label">Nama Produk</label>
+            <label for="name" class="form-label">Nama Kategori</label>
             <input type="text" name="name" class="form-control" required>
         </div>
-
-        <div class="mb-3">
-            <label for="price" class="form-label">Harga</label>
-            <input type="number" name="price" class="form-control" required>
-        </div>
-
         <div class="mb-3">
             <label for="description" class="form-label">Deskripsi</label>
             <textarea name="description" class="form-control" rows="3"></textarea>
         </div>
-
         <div class="mb-3">
             <label for="images" class="form-label">Gambar Produk</label>
             <div id="image-preview-container"></div> <!-- Container Preview Gambar -->
-            <div id="image-upload-container">
-                <div class="input-group mb-2">
-                    <input type="file" name="images[]" class="form-control" onchange="previewImage(event)">
-                    <button type="button" class="btn btn-danger remove-image">X</button>
-                </div>
-            </div>
-            <button type="button" id="add-image" class="btn btn-secondary">Tambah Gambar</button>
+            <input type="file" name="image" required>
         </div>
 
         <button type="submit" class="btn btn-primary">Simpan</button>

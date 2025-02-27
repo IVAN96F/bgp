@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 use App\Models\ProductImage;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
@@ -19,7 +20,7 @@ class AdminProductController extends Controller
             $search = $request->q;
             $query->where('name', 'LIKE', "%$search%");
         }
-
+         // Ambil semua produk dengan relasi gambar
         $products = $query->paginate(10); // Tambahkan pagination
 
         return view('admin.products.index', compact('products'));
@@ -28,7 +29,10 @@ class AdminProductController extends Controller
 
     public function create()
     {
-        return view('admin.products.create');
+        $categories = Category::all();
+        return view('admin.products.create', [
+            'categories' => $categories,
+        ]);
     }
 
     public function store(Request $request)
@@ -36,11 +40,12 @@ class AdminProductController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $product = Product::create($request->only(['name', 'price', 'description']));
+        $product = Product::create($request->only(['name', 'price', 'description', 'category_id']));
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {

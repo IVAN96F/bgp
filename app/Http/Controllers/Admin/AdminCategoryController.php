@@ -112,8 +112,9 @@ class AdminCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category, $id)
     {
+        $category= Category::find($id);
         Storage::disk('public')->delete($category->image_path);
         $category->delete();
         return redirect()->route('admin.category.index')->with('success', 'Category deleted successfully.');

@@ -61,24 +61,19 @@
 
          <!--featured product-->
          <div class="container py-4">
-            <h2 class="text-center mb-4">Our Featured Products</h2>
+            <h2 class="text-center mb-4">Our Featured Categories</h2>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
-                @foreach ($products as $product)
-                    @php
-                        $firstImage = $product->images->first()->image_path ?? 'default.jpg';
-                    @endphp
+                @foreach ($categories as $category)
+                    {{-- @php
+                        $firstImage = $category->images->first()->image_path ?? 'default.jpg';
+                    @endphp --}}
                     <div class="col">
-                        <a href="{{ route('product.show', $product->id) }}" class="text-decoration-none">
+                        <a href="{{ route('category', $category->id) }}" class="text-decoration-none">
                             <div class="card h-100 text-center">
-                                <img src="{{ asset('storage/' . $firstImage) }}" class="card-img-top" alt="{{ $product->name }}">
+                                <img src="{{ asset('storage/' . $category->image_path) }}" class="card-img-top" alt="{{ $category->name }}">
                                 <div class="card-body d-flex flex-column">
-                                    <h5 class="mt-2 text-start" style="font-size: 18px">{{ $product->name }}</h5>
-                                    <p class="text-start flex-grow-1" style="font-size: 15px">{{ $product->description }}</p>
-                                    <p class="text-start" style="font-size: 15px">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                                </div>
-                               
-                                <div>
-
+                                    <h5 class="mt-2 text-start" style="font-size: 18px">{{ $category->name }}</h5>
+                                    <p class="text-start flex-grow-1" style="font-size: 15px">{{ $category->description }}</p>
                                 </div>
                             </div>
                         </a>
@@ -89,7 +84,7 @@
         
     <!--bagaskara news-->
     <div class="container py-5">
-        <h3 class="text-center mt-4">bagaskara news</h3>
+        <h3 class="text-center mt-4">Bagaskara News</h3>
         <div class="row g-4">
             <a href="" class="text-decoration-none d-flex justify-content-center">
                 <div class="col-12 col-md-6">

@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Promo;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
     public function index() {
         $promos = Promo::latest()->get();
-        $products = Product::with('images')->get(); // Ambil semua produk dengan relasi gambar
-        return view('index', compact('products' , 'promos'));
+        $products = Product::with('images')->get();
+        $categories = Category::all(); // Ambil semua produk dengan relasi gambar
+        return view('index', compact('products' , 'promos', 'categories'));
     }
     
     // Menampilkan detail produk berdasarkan ID
@@ -31,8 +33,13 @@ class ProductController extends Controller
 
         return view('search-results', compact('products', 'query'));
     }
-    public function category() {
+    public function category($id) {
         // $products = Product::with('images')->get();
-        return view('category');
+        $category = Category::findOrFail($id);
+        $products = Product::where('category_id', $id)->with('images')->get();
+        return view('category' ,[
+            'products' => $products,
+            'category' => $category
+        ]);
     }
 }
