@@ -3,7 +3,13 @@
 @section('content')
     <div class="container">
         <h1>Edit Role User</h1>
-        
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
             @csrf
             @method('PUT')

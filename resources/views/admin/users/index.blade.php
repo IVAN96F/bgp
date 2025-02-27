@@ -4,6 +4,12 @@
     <div class="container">
         <h1 class="mb-4">Daftar User</h1>
         
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <table class="table table-bordered w-50">
             <thead class="table-dark">
                 <tr>
@@ -20,7 +26,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role->name }}</td>
+                        <td>{{ $user->role->name ?? 'Tidak Ada Role' }}</td>
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
                         </td>

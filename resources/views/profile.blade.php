@@ -101,6 +101,16 @@
                         </span>
                     </button>
                 </a>
+                @if(Auth::user()->role_id == 1) {{-- Asumsikan role admin memiliki ID 1 --}}
+                    <a href="{{ route('admin.products.index') }}" style="text-decoration: none;">
+                        <button class="btn-profile btn btn-outline-secondary btn-block" style="text-align: left;">
+                            <span class="text-profile">
+                                <i class="fa fa-solid fa-tachometer-alt fa-2xl icon-profile" style="color: #f9C46E;"></i> Dashboard
+                            </span>
+                        </button>
+                    </a>
+                @endif
+
                 
 
             </div>
