@@ -206,3 +206,29 @@ body {
 .last-row {
     margin-bottom: 20vh !important;
 }
+.card-cat {
+    transition: transform 0.5s ease-in-out; 
+}
+.card-cat:hover {
+    animation: scale-up 0.5s ease-in-out forwards;
+}
+.card-cat:not(:hover) {
+    animation: scale-down 0.5s ease-out forwards;
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+@keyframes scale-down {
+    0% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}

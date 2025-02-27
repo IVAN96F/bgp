@@ -21,14 +21,18 @@ class ProductController extends Controller
     }
 
     public function search(Request $request)
-{
-    $query = $request->input('query'); // Ambil input pencarian
+    {
+        $query = $request->input('query'); // Ambil input pencarian
 
-    // Cari produk berdasarkan nama atau deskripsi
-    $products = Product::where('name', 'LIKE', "%$query%")
-                        ->orWhere('description', 'LIKE', "%$query%")
-                        ->get();
+        // Cari produk berdasarkan nama atau deskripsi
+        $products = Product::where('name', 'LIKE', "%$query%")
+                            ->orWhere('description', 'LIKE', "%$query%")
+                            ->get();
 
-    return view('search-results', compact('products', 'query'));
-}
+        return view('search-results', compact('products', 'query'));
+    }
+    public function category() {
+        // $products = Product::with('images')->get();
+        return view('category');
+    }
 }

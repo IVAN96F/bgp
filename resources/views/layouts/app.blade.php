@@ -52,7 +52,7 @@
         <ul class="nav flex-column">
             <li><a class="sidebar-link" href="#">Dashboard</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.products.index') }}">Products</a></li>
-            <li><a class="sidebar-link" href="#">Categories</a></li>
+            <li><a class="sidebar-link" href="{{ route('category.index') }}">Categories</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.users.index') }}">Users</a></li>
             <li><a class="sidebar-link" href="#">Posts</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.promos.index') }}">Promo</a></li>

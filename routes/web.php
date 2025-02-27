@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminProductController;
 
 /*
@@ -35,6 +36,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
 
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
+Route::get('/category', [ProductController::class, 'category'])->name('category');
 Route::get('/product/{id}', [ProductController::class, 'show'])->name('product.show');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
@@ -70,3 +72,9 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('promos', PromoController::class);
 });
+Route::get('/category', [AdminCategoryController::class, 'index'])->name('category.index');
+Route::get('/category/create', [AdminCategoryController::class, 'create'])->name('category.create');
+Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category/{id}/update', [AdminCategoryController::class, 'update'])->name('category.update');
+Route::post('/category/store', [AdminCategoryController::class, 'store'])->name('category.store');
+Route::post('/category/{id}/delete', [AdminCategoryController::class, 'destroy'])->name('category.destroy');
