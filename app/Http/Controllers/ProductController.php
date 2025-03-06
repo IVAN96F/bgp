@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Promo;
+use App\Models\Article;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class ProductController extends Controller
         $promos = Promo::latest()->get();
         $products = Product::with('images')->get();
         $categories = Category::all(); // Ambil semua produk dengan relasi gambar
-        return view('index', compact('products' , 'promos', 'categories'));
+        $articles = Article::latest()->get(); // Ambil data artikel
+        return view('index', compact('products' , 'promos', 'categories', 'articles'));
     }
     
     // Menampilkan detail produk berdasarkan ID

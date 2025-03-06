@@ -82,37 +82,26 @@
             </div>
         </div>
         
-    <!--bagaskara news-->
+    
+    <!-- Bagaskara News -->
     <div class="container py-5">
         <h3 class="text-center mt-4">Bagaskara News</h3>
         <div class="row g-4">
-            <a href="" class="text-decoration-none d-flex justify-content-center">
-                <div class="col-12 col-md-6">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="bg-secondary" style="height: 200px;"></div>
-                            <h5 class="mt-2">Judul</h5>
-                            <p>content</p>
-                        </div>
+            @foreach ($articles as $article)
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm">
+                    <img src="{{ asset('storage/' . $article->image) }}" class="card-img-top" alt="{{ $article->title }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $article->title }}</h5>
+                        <p class="card-text">{{ Str::limit($article->content, 100, '...') }}</p>
+                        <a href="{{ route('articles.show', $article->id) }}" class="btn btn-primary">Baca Selengkapnya</a>
                     </div>
                 </div>
-            </a>
-            <a href="" class="text-decoration-none d-flex justify-content-center">
-                <div class="col-12 col-md-6">
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <div class="bg-secondary" style="height: 200px;"></div>
-                            <h5 class="mt-2">Judul</h5>
-                            <p>content</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
+            </div>
+            @endforeach
         </div>
-
-        
     </div>
+
     <div class="row">
         <div class="col-12">
             <div class="text-center mt-4">

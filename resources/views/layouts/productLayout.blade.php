@@ -47,6 +47,8 @@
                 <li><a href="#">Promo</a></li>
                 <li><a href="#">Kontak</a></li>
                 <li><a href="{{ route('profile') }}">Profile</a></li>
+                <li><a href="{{ route('artikel') }}">Articles</a></li>
+
             </ul>
         </div>
     </div>
