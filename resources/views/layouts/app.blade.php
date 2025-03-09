@@ -54,7 +54,7 @@
             <li><a class="sidebar-link" href="{{ route('admin.products.index') }}">Products</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.category.index') }}">Categories</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.users.index') }}">Users</a></li>
-            <li><a class="sidebar-link" href="#">Posts</a></li>
+            <li><a class="sidebar-link" href="{{ route('admin.articles.index') }}">Posts</a></li>
             <li><a class="sidebar-link" href="{{ route('admin.promos.index') }}">Promo</a></li>
         </ul>
     </div>

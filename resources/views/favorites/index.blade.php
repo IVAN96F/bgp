@@ -94,7 +94,12 @@
     </a>
 
     <div class="profile-card mt-3">
-        <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt="Profile" class="rounded-circle">
+        @if (Auth::user()->profile_photo_path == null)
+            <img src="{{ asset('img/profile.png') }}" alt="Profile Picture"
+        style="width: 60px; height: 60px; border-radius: 50%;" />
+        @else
+            <img src="{{ asset('storage/' . Auth::user()->profile_photo_path) }}" alt="Profile" class="rounded-circle">
+        @endif
         <p class="m-0 text-white fs-5">Halo {{ $greeting }}, {{ $user->name }}</p>
     </div>
     

@@ -3,12 +3,14 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PromoController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminCategoryController;
+use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AdminCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +62,20 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 });
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
+// Artikel Admin
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::resource('articles', AdminArticleController::class)->names('admin.articles');
+});
+// Articles
+Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+});
+
+Route::get('/artikel/{id}', [ArticleController::class, 'show'])->name('articles.show');
+
+// Route::get('/admin/articles/{article}/edit', [ArticleController::class, 'edit'])->name('admin.articles.edit');
+
+
 // CategoryAdmin
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
@@ -73,3 +89,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::post('/category/store', [AdminCategoryController::class, 'store'])->name('admin.category.store');
     Route::delete('/category/{id}/delete', [AdminCategoryController::class, 'destroy'])->name('admin.category.destroy');
 });
+
+// Article List
+Route::get('/artikel', [ArticleController::class, 'index'])->name('artikel');
+
+// Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
