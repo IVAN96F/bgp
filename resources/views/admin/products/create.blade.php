@@ -55,7 +55,10 @@
             </div>
             <button type="button" id="add-image" class="btn btn-secondary">Tambah Gambar</button>
         </div>
-
+        <div class="mb-3">
+            <label for="glb_file" class="form-label">Upload Model 3D (GLB)</label>
+            <input type="file" name="glb_file" class="form-control" accept=".glb">
+        </div>        
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="{{ route('admin.products.index') }}" class="btn btn-secondary">Kembali</a>
     </form>

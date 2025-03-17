@@ -46,7 +46,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     // Favorite
     Route::post('/favorite/add', [FavoriteController::class, 'addToFavorite'])->name('favorite.add');
-    Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorite.index');
+    Route::get('/favorite', [FavoriteController::class, 'index'])->name('favorites.index');
     Route::delete('/favorite/{id}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
 });
 
@@ -56,7 +56,7 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 });
 
 // ProductAdmin
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', AdminProductController::class);
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
@@ -74,7 +74,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 Route::get('/artikel/{id}', [ArticleController::class, 'show'])->name('articles.show');
 
 // Route::get('/admin/articles/{article}/edit', [ArticleController::class, 'edit'])->name('admin.articles.edit');
-
 
 // CategoryAdmin
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {

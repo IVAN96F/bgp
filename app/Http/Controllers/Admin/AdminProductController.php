@@ -43,9 +43,20 @@ class AdminProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'glb_file' => 'nullable|file|mimes:glb'
         ]);
+        $glbPath = null;
+        if ($request->hasFile('glb_file')) {
+            $glbPath = $request->file('glb_file')->store('glb_models', 'public');
+        }
 
-        $product = Product::create($request->only(['name', 'price', 'description', 'category_id']));
+        $product = Product::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'description' => $request->description,
+            'category_id' => $request->category_id,
+            'glb_file' => $glbPath,
+        ]);
 
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {

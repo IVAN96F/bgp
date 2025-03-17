@@ -22,16 +22,12 @@
                 <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button>
             </form>
 
-            <a href="{{ route('favorite.index') }}">
+            <a href="{{ route('favorites.index') }}">
                 <i class="bi bi-star-fill text-warning fs-3"></i>
             </a>
             
         </div>
     </div>
-
-
-
-
     <!-- Main Content -->
     <div class="container mt-4">
         @yield('content')
@@ -40,14 +36,13 @@
         <!-- Sidebar -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-content">
-            <h5 class="text-white">Menu</h5>
             <ul class="list-unstyled">
-                <li><a href="#">Home</a></li>
+                <li><a href="#">Beranda</a></li>
                 <li><a href="#">Kategori</a></li>
                 <li><a href="#">Promo</a></li>
                 <li><a href="#">Kontak</a></li>
                 <li><a href="{{ route('profile') }}">Profile</a></li>
-                <li><a href="{{ route('artikel') }}">Articles</a></li>
+                <li><a href="{{ route('artikel') }}">Artikel</a></li>
 
             </ul>
         </div>

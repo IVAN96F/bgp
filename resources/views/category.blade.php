@@ -8,17 +8,26 @@
         @foreach($products as $product)
         <div class="col-lg-3 col-sm-6 col-md-4">
             <div class="card card-cat mb-5">
-                <img src="{{ asset('img/chair2.jpg') }}" class="card-img-top" style="height: 15rem;" alt="...">
+                <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" class="card-img-top preview-img" style="height: 15rem;" alt="...">
+                @if($product->glb_file)
+                    <model-viewer src="{{ asset('storage/' . $product->glb_file) }}" 
+                        alt="Model 3D Produk"
+                        class="card-img-top model-3d"
+                        auto-rotate 
+                        camera-controls 
+                        style="height: 15rem; display: none;" >
+                    </model-viewer>
+                @endif
                 <div class="card-body">
                     <h5 class="card-title"><strong>{{ $product->name }}</strong></h5>
                     <p class="card-text" style="color: red;">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
                     <p class="card-text">{{ $product->description }}</p>
-                    <a href="#" class="btn btn-primary">Detail</a>
+                    <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Detail</a>
                 </div>
             </div>
         </div>
         @endforeach
-        <div class="col-lg-3 col-sm-6 col-md-4">
+        {{-- <div class="col-lg-3 col-sm-6 col-md-4">
             <div class="card card-cat mb-5">
                 <img src="{{ asset('img/chair2.jpg') }}" class="card-img-top preview-img" style="height: 15rem;" alt="...">
                 <model-viewer 
@@ -35,7 +44,7 @@
                     <a href="#" class="btn btn-primary">Go somewhere</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 <script>

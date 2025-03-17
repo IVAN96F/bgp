@@ -2,7 +2,7 @@
 
 @section('content')
         <!-- Produk Section -->
-        <div class="product-container">
+        <div class="product-container" style="padding-bottom: 10rem;">
             <!-- Gambar Produk -->
             <div id="carouselBanner" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -12,39 +12,40 @@
                                 class="{{ $index == 0 ? 'active' : '' }}"></button>
                     @endforeach
                 </div>
-            
-                <div class="carousel-inner">
-                    @foreach ($product->images as $index => $image)
-                        <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                            <img src="{{ asset('storage/' . $image->image_path) }}" 
-                                 class="d-block w-100 img-fluid" 
-                                 alt="{{ $product->name }}" style="height: 300px; width: 100%; object-fit: cover; width: auto; height: auto;">
-                            
+                <div class="row flex-column">
+                    <div class="col">
+                        <div class="carousel-inner">
+                            @foreach ($product->images as $index => $image)
+                                <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                                    <img src="{{ asset('storage/' . $image->image_path) }}" 
+                                         class="d-block img-fluid" 
+                                         alt="{{ $product->name }}" style="width: 100%; height:20em; object-fit:cover">
+                                </div>
+                            @endforeach
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon"></span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
+                                <span class="carousel-control-next-icon"></span>
+                            </button>
                         </div>
-                    @endforeach
-                </div>
-            
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
-            </div>
-            
-
-            <!-- Detail Produk -->
-            <div class="product-details mt-4">
-                <h1>{{ $product->name }}</h1>
-                <p class="text-muted">{{ $product->description }}</p>
-                <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
-                <div class="d-flex justify-content-between mt-2">
-                    <button class="btn btn-warning">
-                        <i class="bi bi-camera"></i>
-                    </button>
-                    <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
-                        <i class="bi bi-star-fill"></i> Add to Favorite
-                    </button>
+                    </div>
+                    <div class="col">
+                        <div class="product-details mt-4">
+                            <!-- Detail Produk -->
+                            <h1>{{ $product->name }}</h1>
+                            <p class="text-muted">{{ $product->description }}</p>
+                            <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
+                            <div class="d-flex justify-content-between mt-2">
+                                <button class="btn btn-warning">
+                                    <i class="bi bi-camera"></i> Try On AR
+                                </button>
+                                <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
+                                    <i class="bi bi-star-fill"></i> Add to Favorite
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

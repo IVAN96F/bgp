@@ -8,7 +8,6 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
         }
         #sidebar {
             width: 250px;

@@ -3,7 +3,7 @@
 @section('title', 'Daftar Kategori')
 
 @section('content')
-<h3>Daftar Produk</h3>
+<h3>Daftar Kategori</h3>
 <a href="{{ route('admin.category.create') }}" class="btn btn-primary">Tambah Kategori</a>
 <table class="table mt-3">
     <thead>

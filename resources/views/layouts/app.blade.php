@@ -8,7 +8,7 @@
     <style>
         body {
             display: flex;
-            height: 100vh;
+            height: 120vh;
         }
         #sidebar {
             width: 250px;
@@ -62,9 +62,7 @@
     <!-- Main Content -->
     <div id="content">
         <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-               
-                
+            <div class="container-fluid">                            
                 <div class="ms-auto">
                     <ul class="navbar-nav">
                         <li class="nav-item dropdown">

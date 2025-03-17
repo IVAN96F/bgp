@@ -17,6 +17,7 @@
             <th>Nama</th>
             <th>Harga</th>
             <th>Gambar</th>
+            <th>3D Model</th>
             <th>Deskripsi</th>
             <th>Aksi</th>
         </tr>
@@ -36,6 +37,18 @@
                 @endforeach
             </td>
             <td>
+                @if($product->glb_file)
+                    <model-viewer src="{{ asset('storage/' . $product->glb_file) }}" 
+                        alt="Model 3D Produk"
+                        auto-rotate 
+                        camera-controls 
+                        style="width: 100px; height: 100px;">
+                    </model-viewer>
+                @else
+                    <span class="text-muted">Tidak ada model</span>
+                @endif
+            </td>
+            <td>
                 {{ $product->description }}
             </td>
             <td>
@@ -49,4 +62,5 @@
         @endforeach
     </tbody>
 </table>
+<script type="module" src="https://unpkg.com/@google/model-viewer@latest/dist/model-viewer.min.js"></script>
 @endsection
