@@ -1,4 +1,4 @@
-@extends('layouts.articleLayout') {{-- Menggunakan layout utama --}}
+@extends('layouts.app') {{-- Menggunakan layout utama --}}
 
 @section('title', 'Daftar Artikel')
 

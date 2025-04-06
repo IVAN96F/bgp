@@ -26,7 +26,7 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->role->name ?? 'Tidak Ada Role' }}</td>
+                        <td>{{ $user->role ?? 'Tidak Ada Role' }}</td>
                         <td>
                             <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
                         </td>

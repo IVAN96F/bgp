@@ -43,7 +43,7 @@ class AdminProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'description' => 'nullable',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'glb_file' => 'nullable|file|mimes:glb'
+            'glb_file' => 'nullable|file'
         ]);
         $glbPath = null;
         if ($request->hasFile('glb_file')) {

@@ -94,15 +94,15 @@
                         </span>
                     </button>
                 </a>
-                <a href="{{ route('favorite.index') }}" style="text-decoration: none;">
+                <a href="{{ route('favorites.index') }}" style="text-decoration: none;">
                     <button class="btn-profile btn btn-outline-secondary btn-block" style="text-align: left;">
                         <span class="text-profile">
                             <i class="fa fa-solid fa-heart fa-2xl icon-profile" style="color: #f9C46E;"></i> Favorite
                         </span>
                     </button>
                 </a>
-                @if(Auth::user()->role_id == 1) {{-- Asumsikan role admin memiliki ID 1 --}}
-                    <a href="{{ route('admin.products.index') }}" style="text-decoration: none;">
+                @if(Auth::user()->role == 'admin') {{-- Asumsikan role admin memiliki ID 1 --}}
+                    <a href="{{ route('admin.dashboard.index') }}" style="text-decoration: none;">
                         <button class="btn-profile btn btn-outline-secondary btn-block" style="text-align: left;">
                             <span class="text-profile">
                                 <i class="fa fa-solid fa-tachometer-alt fa-2xl icon-profile" style="color: #f9C46E;"></i> Dashboard
