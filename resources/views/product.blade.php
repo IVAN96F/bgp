@@ -37,9 +37,10 @@
                             <p class="text-muted">{{ $product->description }}</p>
                             <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
                             <div class="d-flex justify-content-between mt-2">
-                                <button class="btn btn-warning">
+                                <a href="{{ route('camera', $product->id) }}" class="btn btn-warning">
                                     <i class="bi bi-camera"></i> Try On AR
-                                </button>
+                                </a>
+                                
                                 <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
                                     <i class="bi bi-star-fill"></i> Add to Favorite
                                 </button>

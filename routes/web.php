@@ -102,4 +102,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 // Article List
 Route::get('/artikel', [ArticleController::class, 'index'])->name('artikel');
 
-// Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+// Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');\
+
+// camera
+Route::get('/camera/{id}', [ProductController::class, 'camera'])->name('camera');
+

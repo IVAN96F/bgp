@@ -44,4 +44,11 @@ class ProductController extends Controller
             'category' => $category
         ]);
     }
+
+    public function camera($id)
+{
+    $product = Product::findOrFail($id);
+    return view('camera', compact('product'));
+}
+
 }
