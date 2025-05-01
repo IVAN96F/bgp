@@ -1,10 +1,11 @@
 body {
-    font-family: cursive, 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: cursive, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+        "Lucida Sans", Arial, sans-serif;
     overflow-x: hidden;
 }
 
 .main-bg {
-    background-color: rgb(216, 178, 24)  !important;
+    background-color: rgb(216, 178, 24) !important;
 }
 
 .main-color {
@@ -14,14 +15,14 @@ body {
 /* banner */
 
 .carousel-item img {
-    height: 500px; 
-    object-fit: cover; 
+    height: 500px;
+    object-fit: cover;
 }
 
 /* promo */
 
 .hovered-card {
-    transition: .3s;
+    transition: 0.3s;
     margin-bottom: 20px;
 }
 
@@ -39,15 +40,14 @@ body {
     border-top-right-radius: 15px;
 }
 .btn-primary {
-    background-color: #f9C46E; /* Warna coklat */
-    border-color: #f9C46E
+    background-color: #f9c46e; /* Warna coklat */
+    border-color: #f9c46e;
 }
 
 .btn-primary:hover {
-    background-color: #f9C46E; /* Warna coklat lebih terang saat hover */
-    border-color: #f9C46E;
+    background-color: #f9c46e; /* Warna coklat lebih terang saat hover */
+    border-color: #f9c46e;
 }
-
 
 /* pelayanan */
 
@@ -56,7 +56,7 @@ body {
 }
 
 .pelayanan-content {
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .pelayanan-content:hover {
@@ -76,7 +76,7 @@ body {
 }
 
 .menu-favorit-content {
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .menu-favorit-content:hover {
@@ -86,7 +86,7 @@ body {
 /* testimony */
 
 .testimony-content {
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .testimony-content:hover {
@@ -102,7 +102,8 @@ body {
 /* produk banner */
 .produk-banner {
     height: 50vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../image/banner.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url("../image/banner.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -122,22 +123,22 @@ body {
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 @media only screen and (min-width: 1024px) {
-    .navbar{
-        display : none !important;
+    .navbar {
+        display: none !important;
     }
 }
 .slick-slide {
-	transform: scale(0.8);
-	transition: all 0.4s ease-in-out;
-	padding: 40px 0;
+    transform: scale(0.8);
+    transition: all 0.4s ease-in-out;
+    padding: 40px 0;
 }
 .slick-slide img {
-	max-width: 100%;
-	transition: all 0.4s ease-in-out;
+    max-width: 100%;
+    transition: all 0.4s ease-in-out;
 }
 
 .slick-center {
-	transform: scale(1.1);
+    transform: scale(1.1);
 }
 .navbar a {
     text-decoration: none;
@@ -156,7 +157,7 @@ body {
     top: -40px;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
-    
+
 .navbar .logo img {
     width: 65px;
 }
@@ -205,7 +206,7 @@ body {
     margin-bottom: 20vh !important;
 }
 .card-cat {
-    transition: transform 0.5s ease-in-out; 
+    transition: transform 0.5s ease-in-out;
 }
 .card-cat:hover {
     animation: scale-up 0.5s ease-in-out forwards;
@@ -230,11 +231,56 @@ body {
         transform: scale(1);
     }
 }
-.preview-img, .model-3d {
+.preview-img,
+.model-3d {
     transition: opacity 0.5s ease-in-out;
 }
 .hidden {
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
 }
+.custom-shape-divider-top {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: translateY(-10px);
+}
 
+.custom-shape-divider-top svg {
+    display: block;
+    width: calc(277% + 1.3px);
+    height: 151px;
+}
+
+.custom-shape-divider-top .shape-fill {
+    fill: #ffffff;
+}
+.footer-wave svg {
+    width: 100%;
+    display: block;
+}
+.footer {
+    background: #4c2d84;
+    color: white;
+}
+.footer a {
+    color: white;
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+.back-to-top {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+}
+.brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.social-icons img {
+    filter: brightness(0) invert(1);
+}

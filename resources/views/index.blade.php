@@ -102,7 +102,7 @@
         </div>
     </div>
 
-    <div class="row">
+    {{-- <div class="row">
         <div class="col-12">
             <div class="text-center mt-4">
                 <h5>We Are SVLK And FSC Certified</h5>
@@ -137,8 +137,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
+    </section> --}}
 
 
     
