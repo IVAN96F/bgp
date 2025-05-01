@@ -52,7 +52,7 @@
                 --}}
                 <div class="dropdown">
                     @auth
-                        <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="{{ route('profile') }}" class="d-flex align-items-center text-decoration-none text-dark">
                             <img
                                 src="{{ Auth::user()->profile_image ? asset('storage/' . Auth::user()->profile_image) : asset('img/profile.png') }}"
                                 alt="profile"
