@@ -18,19 +18,20 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $roles = Role::all(); // Pastikan semua role diambil
+        $roles = ['admin', 'user']; // Gunakan array biasa, bukan dari DB
         return view('admin.users.edit', compact('user', 'roles'));
     }
 
-    public function update(Request $request, $id) // Perbaikan: Gunakan ID, bukan model binding
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'role_id' => 'required|exists:roles,id'
+            'role' => 'required|in:admin,user'
         ]);
 
-        $user = User::findOrFail($id); // Ambil user berdasarkan ID
-        $user->update(['role_id' => $request->role_id]);
+        $user = User::findOrFail($id);
+        $user->update(['role' => $request->role]);
 
         return redirect()->route('admin.users.index')->with('success', 'Role berhasil diperbarui');
     }
+
 }

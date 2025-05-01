@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\AdminCategoryController;
@@ -51,24 +52,28 @@ Route::middleware(['auth'])->group(function () {
 });
 
 // Promo
-Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('promos', PromoController::class);
 });
 
+
+
 // ProductAdmin
-Route::middleware(['admin'])->prefix('admin')->name('admin.')->group(function () {
+Route::middleware(['admin', 'auth'])->prefix('admin')->name('admin.')->group(function () {
     Route::resource('products', AdminProductController::class);
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });
 Route::delete('/admin/products/delete-image/{id}', [AdminProductController::class, 'deleteImage']);
 
-// Artikel Admin
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::resource('articles', AdminArticleController::class)->names('admin.articles');
-});
+// // Artikel Admin
+// Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
+//     Route::resource('articles', AdminArticleController::class)->names('admin.articles');
+// });
+
 // Articles
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/article', [ArticleController::class, 'index'])->name('article.index');
+    Route::resource('articles', AdminArticleController::class)->names('admin.articles');
 });
 
 Route::get('/artikel/{id}', [ArticleController::class, 'show'])->name('articles.show');
@@ -77,10 +82,15 @@ Route::get('/artikel/{id}', [ArticleController::class, 'show'])->name('articles.
 
 // CategoryAdmin
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
+    // Dahsboard
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard.index');
+
+    // User
     Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
     Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
     Route::put('/users/{id}', [UserController::class, 'update'])->name('admin.users.update');
 
+    // Category
     Route::get('/category', [AdminCategoryController::class, 'index'])->name('admin.category.index');
     Route::get('/category/create', [AdminCategoryController::class, 'create'])->name('admin.category.create');
     Route::get('/category/{id}/edit', [AdminCategoryController::class, 'edit'])->name('admin.category.edit');
@@ -92,4 +102,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
 // Article List
 Route::get('/artikel', [ArticleController::class, 'index'])->name('artikel');
 
-// Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');
+// Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');\
+
+// camera
+Route::get('/camera/{id}', [ProductController::class, 'camera'])->name('camera');
+

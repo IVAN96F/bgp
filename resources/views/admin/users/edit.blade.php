@@ -25,15 +25,16 @@
             </div>
 
             <div class="mb-3">
-                <label for="role_id" class="form-label">Role</label>
-                <select name="role_id" id="role_id" class="form-control">
+                <label for="role" class="form-label">Role</label>
+                <select name="role" id="role" class="form-control">
                     @foreach($roles as $role)
-                        <option value="{{ $role->id }}" {{ $user->role_id == $role->id ? 'selected' : '' }}>
-                            {{ $role->name }}
+                        <option value="{{ $role }}" {{ $user->role === $role ? 'selected' : '' }}>
+                            {{ ucfirst($role) }}
                         </option>
                     @endforeach
                 </select>
             </div>
+            
 
             <button type="submit" class="btn btn-success">Update Role</button>
         </form>
