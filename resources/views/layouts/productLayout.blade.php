@@ -77,7 +77,7 @@
                 <ul class="list-unstyled">
                     <li><a href="{{ url('/') }}">Beranda</a></li>
                     <li><a href="{{ url('/#kategori') }}">Kategori</a></li>
-                    <li><a href="#">Kontak</a></li>
+                    <li><a href="{{ url('/#footer') }}">Kontak</a></li>
                     <li><a href="{{ route('profile') }}">Profile</a></li>
                     <li><a href="{{ route('artikel') }}">News</a></li>
                 </ul>
@@ -92,7 +92,7 @@
         </div>
         {{-- footer --}}
         
-        <footer class="footer mt-5">
+        <footer class="footer mt-5" id="footer">
             <div class="container">
                 <div class="row justify-content-center g-3">
                     <h3>Our Contact</h3>
