@@ -71,44 +71,6 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="text-center mt-4">
-                <h5>We Are SVLK And FSC Certified</h5>
-                <img src="{{ asset('img/svlk.png') }}" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- Contact -->
-    <section id="contact" class="text-center mt-5" style="margin-bottom: 10em !important">
-        <h2 class="section-title mb-3 mt-3">Our Contact</h2>
-        <div class="container">
-            <div class="row justify-content-center g-3">
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/gmail.png') }}" alt="Email" width="26" class="me-2">
-                    <span>andang1503@gmail.com</span>
-                </div>
-                {{-- <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/fb.png') }}" alt="Facebook" width="26" class="me-2">
-                    <span>bagaskara</span>
-                </div> --}}
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/wa.png') }}" alt="WhatsApp" width="32" class="me-2">
-                    <a href="https://wa.me/+6282237011039" target="_blank" class="text-decoration-none text-dark" >Admin Ika (082237011039)</a>
-                </div>
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/wa.png') }}" alt="WhatsApp" width="32" class="me-2">
-                    <a href="https://wa.me/+6285725741404" target="_blank" class="text-decoration-none text-dark">Admin Widya (085725741404)</a>
-                </div>
-                
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/Instagram.png') }}" alt="Instagram" width="26" class="me-2">
-                    <span>@bagaskarafurniture</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
 
     
