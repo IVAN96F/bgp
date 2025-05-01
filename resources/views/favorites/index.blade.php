@@ -89,8 +89,8 @@
 <body>
 
 <div class="container mt-3">
-    <a href="{{ url('/') }}" class="text-dark text-decoration-none d-flex align-items-center">
-        <span class="fs-4 me-2">&#8592;</span> Back
+    <a href="{{ url()->previous() }}" class="text-dark text-decoration-none d-flex align-items-center">
+        <span class="fs-4 me-2">&#8592;</span> Kembali
     </a>
 
     <div class="profile-card mt-3">
@@ -103,26 +103,44 @@
         <p class="m-0 text-white fs-5">Halo {{ $greeting }}, {{ $user->name }}</p>
     </div>
     
-    <h5 class="mt-3 fw-bold">It’s Your Favorite</h5>
+    <h5 class="mt-3 fw-bold">Produk Favorite Kamu</h5>
 
     @foreach($favorites as $favorite)
-    <a href="{{ route('product.show', $favorite->product->id) }}" class="text-decoration-none">
-        <div class="favorite-item d-flex align-items-center justify-content-between text-decoration-none">
-            <img src="{{ asset('storage/' . ($favorite->product->images->first()->image_path ?? 'default.jpg')) }}" alt="Product" style="width: auto; max-height: 120px; border-radius: 10px;">
-            <div class="item-info d-flex flex-column">
-                <p class="item-title">{{ $favorite->product->name }}</p>
-                <p class="item-desc">{{ Str::limit($favorite->product->description, 50) }}</p>
-                <p class="item-price text-end">Rp. {{ number_format($favorite->product->price, 0, ',', '.') }}</p>
+    <div class="card mb-3 shadow-sm border-0 rounded-4 overflow-hidden">
+        <div class="row g-0 align-items-center">
+            <div class="col-md-3 text-center p-2">
+                <img src="{{ asset('storage/' . ($favorite->product->images->first()->image_path ?? 'default.jpg')) }}" 
+                     alt="Product" 
+                     class="img-fluid rounded-3" 
+                     style="max-height: 120px; object-fit: cover;">
             </div>
-            <form action="{{ route('favorite.destroy', $favorite->id) }}" method="POST" class="delete-favorite">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger">
-                    <i class="bi bi-trash"></i>
-                </button>
-            </form>
+            <div class="col-md-7">
+                <div class="card-body py-3">
+                    <h5 class="card-title mb-1">
+                        <a href="{{ route('product.show', $favorite->product->id) }}" 
+                           class="text-dark text-decoration-none fw-semibold">
+                            {{ $favorite->product->name }}
+                        </a>
+                    </h5>
+                    <p class="card-text text-muted mb-1" style="font-size: 0.9rem;">
+                        {{ Str::limit($favorite->product->description, 60) }}
+                    </p>
+                    <p class="card-text fw-bold text-success">
+                        Rp. {{ number_format($favorite->product->price, 0, ',', '.') }}
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-2 text-end pe-3">
+                <form action="{{ route('favorite.destroy', $favorite->id) }}" method="POST" class="d-inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-outline-danger btn-sm rounded-circle" title="Hapus dari Favorit">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </form>
+            </div>
         </div>
-    </a>
+    </div> 
     @endforeach
 </div>
 

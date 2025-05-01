@@ -105,5 +105,6 @@ Route::get('/artikel', [ArticleController::class, 'index'])->name('artikel');
 // Route::get('/articles/{article}', [ArticleController::class, 'show'])->name('articles.show');\
 
 // camera
-Route::get('/camera/{id}', [ProductController::class, 'camera'])->name('camera');
+Route::get('/3d-models/{id}', [ProductController::class, 'camera'])->name('camera');
+Route::get('/ar-marker/{id}', [ProductController::class, 'arMarker'])->name('ar.marker');
 

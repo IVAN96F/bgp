@@ -81,7 +81,8 @@ body {
 }
 
 .text-profile {
-    color: #f9C46E;
+    color: #000000;
+    font-weight: bold
 }
 
 .icon-profile {

@@ -1,5 +1,7 @@
 @extends('layouts.productLayout')
 
+@section('title', 'Details')
+
 @section('content')
         <!-- Produk Section -->
         <div class="product-container" style="padding-bottom: 10rem;">
@@ -37,60 +39,27 @@
                             <p class="text-muted">{{ $product->description }}</p>
                             <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
                             <div class="d-flex justify-content-between mt-2">
-                                <a href="{{ route('camera', $product->id) }}" class="btn btn-warning">
-                                    <i class="bi bi-camera"></i> Try On AR
-                                </a>
-                                
+                                <div class="col">
+                                    @if ($product->glb_file)
+                                    <a href="{{ route('camera', $product->id) }}" class="btn btn-warning">
+                                        <i class="bi bi-camera"></i> Try On 3D Models
+                                    </a>
+                                    <a href="{{ route('ar.marker', $product->id) }}" class="btn btn-warning">
+                                        <i class="bi bi-upc-scan"></i> Try AR with Marker
+                                    </a>
+                                </div>
+                                @else
+                                    <span class="text-danger mt-2">Belum ada 3D model</span>
+                                @endif
                                 <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
                                     <i class="bi bi-star-fill"></i> Add to Favorite
                                 </button>
                             </div>
-                        @endforeach
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselBanner" data-bs-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </button>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="product-details mt-4">
-                        <!-- Detail Produk -->
-                        <h1>{{ $product->name }}</h1>
-                        <p class="text-muted">{{ $product->description }}</p>
-                        <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
-                        <div class="d-flex justify-content-between mt-2">
-                            <button class="btn btn-warning">
-                                <i class="bi bi-camera"></i> Try On AR
-                            </button>
-                            <button class="btn btn-success btn-favorite" data-product-id="{{ $product->id }}">
-                                <i class="bi bi-star-fill"></i> Add to Favorite
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Produk Terkait -->
-    {{-- <div class="related-products mt-5">
-        <h6>Produk Terkait</h6>
-        <div class="d-flex justify-content-around">
-            @foreach ($relatedProducts as $related)
-                <div class="card text-center" style="width: 45%;">
-                    <a href="{{ route('product.show', $related->id) }}" class="text-decoration-none">
-                        <img src="{{ asset('storage/' . ($related->images->first()->image_path ?? 'default.jpg')) }}" class="card-img-top" alt="{{ $related->name }}">
-                        <div class="card-body">
-                            <h6>{{ $related->name }}</h6>
-                            <p class="text-muted">{{ $related->description }}</p>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-        </div>
-    </div> --}}
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>

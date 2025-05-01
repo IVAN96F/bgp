@@ -46,9 +46,13 @@ class ProductController extends Controller
     }
 
     public function camera($id)
-{
-    $product = Product::findOrFail($id);
-    return view('camera', compact('product'));
-}
-
+    {
+        $product = Product::findOrFail($id);
+        return view('camera', compact('product'));
+    }
+    public function arMarker($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('ar-marker', compact('product'));
+    }
 }

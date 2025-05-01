@@ -2,11 +2,7 @@
 
 @section('title', 'Home')
     
-
 @section('content')
-    
-
-
     <!--banner-->
     <div id="carouselBanner" class="carousel slide mt-3" data-bs-ride="carousel">
         <!-- Indikator (opsional) -->
@@ -34,39 +30,12 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
-    
-
-{{-- <!--TERLARIS-->
-    <div class="container mt-4">
-        <h2 class="text-center mb-4">Terlaris</h2>
-        <div class="slider">
-            <div class="item">
-
-                <img src="{{ asset('img/chair.jpg') }}" alt="" />
-            </div>
-            <div class="item">
-                <img src="{{ asset('img/chair2.jpg') }}" alt="" />
-            </div>
-            <div class="item">
-                <img src="{{ asset('img/chair3.jpg') }}" alt="" />
-            </div>
-            <div class="item">
-                <img src="{{ asset('img/chair4.png') }}" alt="" />
-            </div>
-            <div class="item">
-                <img src="{{ asset('img/chair5.png')  }}" alt="" />
-            </div>
-        </div>
-    </div> --}}
 
          <!--featured product-->
          <div class="container py-4">
             <h2 class="text-center mb-4">Our Featured Categories</h2>
             <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4">
                 @foreach ($categories as $category)
-                    {{-- @php
-                        $firstImage = $category->images->first()->image_path ?? 'default.jpg';
-                    @endphp --}}
                     <div class="col">
                         <a href="{{ route('category', $category->id) }}" class="text-decoration-none">
                             <div class="card h-100 text-center">
@@ -101,43 +70,6 @@
             @endforeach
         </div>
     </div>
-
-    {{-- <div class="row">
-        <div class="col-12">
-            <div class="text-center mt-4">
-                <h5>We Are SVLK And FSC Certified</h5>
-                <img src="{{ asset('img/svlk.png') }}" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- Contact -->
-    <section id="contact" class="text-center mt-5" style="margin-bottom: 10em !important">
-        <h2 class="section-title mb-3 mt-3">Our Contact</h2>
-        <div class="container">
-            <div class="row justify-content-center g-3">
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/gmail.png') }}" alt="Email" width="26" class="me-2">
-                    <span>email@example.com</span>
-                </div>
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/fb.png') }}" alt="Facebook" width="26" class="me-2">
-                    <span>bagaskara</span>
-                </div>
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/wa.png') }}" alt="WhatsApp" width="32" class="me-2">
-                    <span>02982872626667</span>
-                </div>
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/phone.png') }}" alt="Phone" width="20" class="me-2">
-                    <span>+63736666368</span>
-                </div>
-                <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
-                    <img src="{{ asset('img/Instagram.png') }}" alt="Instagram" width="26" class="me-2">
-                    <span>@shrl.amri</span>
-                </div>
-            </div>
-        </div>
-    </section> --}}
 
 
     
