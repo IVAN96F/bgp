@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\MailRedirectController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdminArticleController;
 use App\Http\Controllers\Admin\AdminProductController;
@@ -108,3 +109,5 @@ Route::get('/artikel', [ArticleController::class, 'index'])->name('artikel');
 Route::get('/3d-models/{id}', [ProductController::class, 'camera'])->name('camera');
 Route::get('/ar-marker/{id}', [ProductController::class, 'arMarker'])->name('ar.marker');
 
+// redirect email
+Route::get('/redirect-gmail', [MailRedirectController::class, 'redirectToGmail'])->name('redirect.gmail');

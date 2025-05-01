@@ -75,8 +75,8 @@
         <div id="sidebar" class="sidebar">
             <div class="sidebar-content">
                 <ul class="list-unstyled">
-                    <li><a href="#">Beranda</a></li>
-                    <li><a href="#">Kategori</a></li>
+                    <li><a href="{{ url('/') }}">Beranda</a></li>
+                    <li><a href="{{ url('/#kategori') }}">Kategori</a></li>
                     <li><a href="#">Kontak</a></li>
                     <li><a href="{{ route('profile') }}">Profile</a></li>
                     <li><a href="{{ route('artikel') }}">News</a></li>
@@ -91,13 +91,45 @@
             <a href="#" id="menu-icon"><i class="bi bi-list"></i></a>
         </div>
         {{-- footer --}}
-        <footer class="footer">
-            <p>&copy; 2025 Bagaskara Galih Perkasa. All rights reserved.</p>
+        
+        <footer class="footer mt-5">
+            <div class="container">
+                <div class="row justify-content-center g-3">
+                    <h3>Our Contact</h3>
+                    <!-- WhatsApp Admin Widya -->
+                    <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
+                        <a href="https://wa.me/+6285725741404" target="_blank"  class="text-white">
+                            <i class="bi bi-whatsapp" style="font-size: 25px;"></i>
+                        </a>
+                        <span>Admin Widya: <a href="https://wa.me/+6285725741404" target="_blank" class="text-white">wa.me/+6285725741404</a></span>
+                    </div>
+                    <!-- WhatsApp Admin Ika -->
+                    <div class="col-md-5 col-10 d-flex align-items-center justify-content-center">
+                        <a href="https://wa.me/+6282237011039" target="_blank" class="text-white">
+                            <i class="bi bi-whatsapp" style="font-size: 25px;"></i>
+                        </a>
+                        <span>Admin Ika: <a href="https://wa.me/+6282237011039" target="_blank" class="text-white" >wa.me/+6282237011039</a></span>
+                    </div>
+                    <!-- Email -->
+                    <div class="col-md-5 col-10 d-flex align-items-center justify-content-center" class="text-white">
+                        <i class="bi bi-envelope" style="font-size: 25px;"></i>
+                        <span><a href="mailto:andang1503@gmail.com" class="text-white"> andang1503@gmail.com</a></span>
+                    </div>
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/bagaskarafurniture" target="_blank" class="text-white">
+                        <i class="bi bi-instagram" style="font-size: 26px;"></i> @bagaskarafurniture
+                    </a>
+                </div>
+            </div>
+            <p class="mt-5">&copy; 2025 Bagaskara Galih Perkasa. All rights reserved.</p>
             <p>
                 Developed by
                 <a href="https://example.com" target="_blank">UDINUS</a>
             </p>
+            <!-- Contact Information -->
+            
         </footer>
+        
 
         <script>
             document.getElementById('menu-icon').addEventListener('click', function(event) {

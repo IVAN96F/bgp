@@ -21,8 +21,16 @@ class ProductController extends Controller
     // Menampilkan detail produk berdasarkan ID
     public function show($id) {
         $product = Product::with('images')->findOrFail($id);
-        return view('product', compact('product'));
+
+        // Produk terkait berdasarkan kategori yang sama, tapi beda ID
+        $relatedProducts = Product::where('category_id', $product->category_id)
+                                  ->where('id', '!=', $product->id)
+                                  ->with('images')
+                                  ->paginate(4); // Paginate 4 item per halaman
+
+        return view('product', compact('product', 'relatedProducts'));
     }
+
 
     public function search(Request $request)
     {
