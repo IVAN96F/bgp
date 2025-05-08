@@ -8,13 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Maven Pro' rel='stylesheet'>
 </head>
 <body>
- 
-
-
-
-
     <!-- Main Content -->
     <div class="container mt-4">
         @yield('content')

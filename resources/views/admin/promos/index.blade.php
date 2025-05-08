@@ -27,7 +27,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td><img src="{{ asset('storage/' . $promo->image) }}" width="100"></td>
                     <td>{{ $promo->title }}</td>
-                    <td>{{ $promo->description }}</td>
+                    <td>{{ Str::limit($promo->description, 50, '...') }}</td>
                     <td>
                         <a href="{{ route('admin.promos.edit', $promo->id) }}" class="btn btn-warning btn-sm">Edit</a>
                         <form action="{{ route('admin.promos.destroy', $promo->id) }}" method="POST" class="d-inline">

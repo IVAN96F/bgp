@@ -42,7 +42,9 @@
                                 <img src="{{ asset('storage/' . $category->image_path) }}" class="card-img-top" alt="{{ $category->name }}">
                                 <div class="card-body d-flex flex-column">
                                     <h5 class="mt-2 text-start" style="font-size: 18px">{{ $category->name }}</h5>
-                                    <p class="text-start flex-grow-1" style="font-size: 15px">{{ $category->description }}</p>
+                                    <p class="text-start flex-grow-1" style="font-size: 15px">
+                                        {{ Str::limit($category->description, 30, '...') }}
+                                    </p>
                                 </div>
                             </div>
                         </a>

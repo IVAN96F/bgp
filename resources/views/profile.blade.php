@@ -80,7 +80,7 @@
             </div>
             <div class="profile-options">
                 <!-- Modal -->
-                <a href="https://instagram.com/ppko_hmtiudinus" style="text-decoration: none;">
+                <a href="{{ url('/#footer') }}" style="text-decoration: none;">
                     <button class=" btn-profile btn btn-outline-secondary btn-block" style="text-align: left;">
                         <span class="text-profile"><i class="fa fa-solid fa-phone fa-2xl icon-profile"
                                 style="color: #f9C46E;"></i>Hubungi Kami</span>

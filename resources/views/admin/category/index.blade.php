@@ -22,7 +22,7 @@
             <td>{{ $category->name }}</td>
             <td><img src="{{ asset('storage/' . $category->image_path) }}" width="50" alt="{{ $category->name }}"></td>
             <td>
-                {{ $category->description }}
+                {{ Str::limit($category->description, 200, '...') }}
             </td>
             <td>
                 <a href="{{ route('admin.category.edit', $category->id) }}" class="btn btn-warning">Edit</a>

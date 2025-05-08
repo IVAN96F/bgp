@@ -4,61 +4,53 @@
 
 @section('content')
 <div class="container mt-5">
-    <div class="row" style="margin-bottom: 5rem;">
+    <div class="row g-4" style="margin-bottom: 5rem;">
         @foreach($products as $product)
-        <div class="col-lg-3 col-sm-6 col-md-4">
-            <div class="card card-cat mb-5">
-                <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" class="card-img-top preview-img" style="height: 15rem;" alt="...">
-                @if($product->glb_file)
-                    <model-viewer src="{{ asset('storage/' . $product->glb_file) }}" 
-                        alt="Model 3D Produk"
-                        class="card-img-top model-3d"
-                        auto-rotate 
-                        camera-controls 
-                        style="height: 15rem; display: none;" >
-                    </model-viewer>
-                @endif
-                <div class="card-body">
-                    <h5 class="card-title"><strong>{{ $product->name }}</strong></h5>
-                    <p class="card-text" style="color: red;">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
-                    <p class="card-text">{{ $product->description }}</p>
-                    <a href="{{ route('product.show', $product->id) }}" class="btn btn-primary">Detail</a>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        {{-- <div class="col-lg-3 col-sm-6 col-md-4">
-            <div class="card card-cat mb-5">
-                <img src="{{ asset('img/chair2.jpg') }}" class="card-img-top preview-img" style="height: 15rem;" alt="...">
-                <model-viewer 
-                    src="{{ asset('assets/chair.glb') }}" 
-                    class="card-img-top model-3d" 
-                    style="height: 15rem; display: none;" 
-                    auto-rotate 
-                    camera-controls 
-                    alt="3D Model">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-4">
+    <div class="card card-cat shadow-sm border-0 h-100">
+        <div class="ratio ratio-4x3 bg-light position-relative">
+            <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" 
+                class="position-absolute top-0 start-0 w-100 h-100 preview-img" 
+                style="object-fit: contain;" 
+                alt="{{ $product->name }}">
+
+            @if($product->glb_file)
+                <model-viewer src="{{ asset('storage/' . $product->glb_file) }}"
+                    class="position-absolute top-0 start-0 w-100 h-100 model-3d"
+                    alt="Model 3D Produk"
+                    auto-rotate
+                    camera-controls
+                    style="display: none;">
                 </model-viewer>
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div> --}}
+            @endif
+        </div>
+        <div class="card-body">
+            <h6 class="card-title">{{ Str::limit($product->name, 15, '...') }}</h6>
+            <p class="card-text text-dark fw-bold">Rp. {{ number_format($product->price, 0, ',', '.') }}</p>
+            <a href="{{ route('product.show', $product->id) }}" class="btn btn-sm btn-primary">Detail</a>
+        </div>
     </div>
 </div>
+
+        @endforeach
+    </div>
+</div>
+
+{{-- Hover effect to switch image/model-viewer --}}
 <script>
     document.querySelectorAll(".card-cat").forEach(card => {
         let img = card.querySelector(".preview-img");
         let model = card.querySelector(".model-3d");
 
+        if (!img || !model) return;
+
         card.addEventListener("mouseenter", () => {
-            img.classList.add("hidden"); // Mulai efek transparan
+            img.classList.add("hidden");
             setTimeout(() => {
-                img.style.display = "none"; // Sembunyikan setelah transisi selesai
+                img.style.display = "none";
                 model.style.display = "block";
-                setTimeout(() => model.classList.remove("hidden"), 10); // Tampilkan dengan efek
-            }, 500); // Sesuaikan dengan durasi transisi
+                setTimeout(() => model.classList.remove("hidden"), 10);
+            }, 300);
         });
 
         card.addEventListener("mouseleave", () => {
@@ -67,9 +59,8 @@
                 model.style.display = "none";
                 img.style.display = "block";
                 setTimeout(() => img.classList.remove("hidden"), 10);
-            }, 500);
+            }, 300);
         });
     });
-
 </script>
 @endsection

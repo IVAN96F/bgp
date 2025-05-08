@@ -32,28 +32,27 @@
         <!-- Detail Produk -->
         <div class="col-md-6 mt-4 mt-md-0">
             <div class="product-details">
-                <h1>{{ $product->name }}</h1>
-                <p class="text-muted">{{ $product->description }}</p>
-                <h3 class="text-danger">Rp {{ number_format($product->price, 0, ',', '.') }}</h3>
-
+                <h1 class="text-dark fw-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</h1>
+                <h3 class="text-dark">{{ $product->name }}</h3>
+                
                 <div class="mt-3 row g-2">
                     @if ($product->glb_file)
-                        <div class="col-6">
-                            <a href="{{ route('camera', $product->id) }}" class="btn btn-warning w-100">
-                                <i class="bi bi-camera"></i> Try On 3D Models
-                            </a>
-                        </div>
-                        <div class="col-6">
-                            <a href="{{ route('ar.marker', $product->id) }}" class="btn btn-warning w-100">
-                                <i class="bi bi-upc-scan"></i> Try AR with Marker
-                            </a>
-                        </div>
+                    <div class="col-6">
+                        <a href="{{ route('camera', $product->id) }}" class="btn btn-warning w-100">
+                            <i class="bi bi-camera"></i> Try On 3D Models
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="{{ route('ar.marker', $product->id) }}" class="btn btn-warning w-100">
+                            <i class="bi bi-upc-scan"></i> Try AR with Marker
+                        </a>
+                    </div>
                     @else
-                        <div class="col-12">
-                            <span class="text-danger">Belum ada 3D model</span>
-                        </div>
+                    <div class="col-12">
+                        <span class="text-danger">Belum ada 3D model</span>
+                    </div>
                     @endif
-                
+                    
                     <div class="col-6">
                         <button class="btn btn-success w-100 btn-favorite" data-product-id="{{ $product->id }}">
                             <i class="bi bi-star-fill"></i> Favorite
@@ -65,6 +64,7 @@
                         </a>
                     </div>
                 </div>
+                <p class="text-muted mt-3">{{ $product->description }}</p>
                 
             </div>
         </div>
@@ -83,7 +83,7 @@
                             @endif
                             <div class="card-body">
                                 <h6 class="card-title text-truncate">{{ $related->name }}</h6>
-                                <p class="card-text text-dark">Rp {{ number_format($related->price, 0, ',', '.') }}</p>
+                                <p class="card-text text-dark fw-bold">Rp {{ number_format($related->price, 0, ',', '.') }}</p>
                                 <a href="{{ route('product.show', $related->id) }}" class="btn btn-sm btn-warning w-100 text-dark">Lihat Detail</a>
                             </div>
                         </div>

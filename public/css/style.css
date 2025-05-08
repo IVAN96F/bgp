@@ -4,8 +4,7 @@ html {
 
 
 body {
-    font-family: cursive, "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-        "Lucida Sans", Arial, sans-serif;
+    font-family: 'Maven Pro';
     overflow-x: hidden;
     margin: 0;
 }

@@ -21,6 +21,6 @@
         {!! nl2br(e($article->content)) !!}
     </div>
 
-    <a href="{{ route('home') }}" class="btn btn-primary mt-3">Kembali</a>
+    <a href="{{ route('home') }}" class="btn btn-primary mt-3 last-row">Kembali</a>
 </div>
 @endsection

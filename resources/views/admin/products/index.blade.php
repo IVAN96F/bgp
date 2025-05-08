@@ -49,7 +49,7 @@
                 @endif
             </td>
             <td>
-                {{ $product->description }}
+                {{ Str::limit($product->description, 200, '...') }}
             </td>
             <td>
                 <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">Edit</a>
