@@ -4,24 +4,27 @@
     
 @section('content')
     <!--banner-->
-    <div id="carouselBanner" class="carousel slide mt-3" data-bs-ride="carousel">
-        <!-- Indikator (opsional) -->
+    <div id="carouselBanner" class="carousel slide" data-bs-ride="carousel" 
+     style="margin: 0 auto; padding: 0; max-height: 180px; overflow: hidden;">
+        <!-- Indikator -->
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="2"></button>
+            @foreach ($promos as $key => $promo)
+                <button type="button" data-bs-target="#carouselBanner" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}"></button>
+            @endforeach
         </div>
-    
+
         <!-- Wrapper untuk slide -->
         <div class="carousel-inner">
             @foreach ($promos as $key => $promo)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <img src="{{ asset('storage/' . $promo->image) }}" class="d-block w-100" alt="{{ $promo->title }}" style="height: 300px; object-fit: cover;">
+                    <img src="{{ asset('storage/' . $promo->image) }}" 
+                        class="d-block w-100 mx-auto myPromos" 
+                        alt="{{ $promo->title }}" 
+                        style="max-height: 200px; width: auto; object-fit: contain; background-color: #fff;">
                 </div>
             @endforeach
         </div>
-        
-    
+
         <!-- Tombol navigasi -->
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselBanner" data-bs-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -30,6 +33,7 @@
             <span class="carousel-control-next-icon"></span>
         </button>
     </div>
+
 
          <!--featured product-->
          <div class="container py-4" id="kategori">

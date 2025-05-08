@@ -277,3 +277,15 @@ body {
         position: unset;
     }
 }
+
+.myPromos {
+    margin: 0 auto;
+    display: block;
+    max-height: 180px;
+    object-fit: contain;
+}
+
+#carouselBanner {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
