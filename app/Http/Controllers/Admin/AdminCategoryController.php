@@ -72,8 +72,9 @@ class AdminCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
+        $category = Category::findOrFail($id);
         return view('admin.category.edit', compact('category'));
     }
 
@@ -84,27 +85,31 @@ class AdminCategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
+    public function update(Request $request, $id)
+{
+    $category = Category::findOrFail($id);
 
-        if ($request->hasFile('image')) {
-            Storage::disk('public')->delete($category->image_path);
-            $imagePath = $request->file('image')->store('categories', 'public');
-            $category->image_path = $imagePath;
-        }
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        $category->update([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+    $data = [
+        'name' => $request->name,
+        'description' => $request->description,
+    ];
 
-        return redirect()->route('admin.category.index')->with('success', 'Category updated successfully.');
+    if ($request->hasFile('image')) {
+        Storage::disk('public')->delete($category->image_path);
+        $data['image_path'] = $request->file('image')->store('categories', 'public');
     }
+
+    $category->update($data);
+
+    return redirect()->route('admin.category.index')->with('success', 'Kategori berhasil diperbarui.');
+}
+
 
     /**
      * Remove the specified resource from storage.
